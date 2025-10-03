@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f7ff;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .pet-details {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: #fff;
+            display: flex;
+        }
+        .pet-details img {
+            max-width: 50%;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        .pet-details-content {
+            padding: 20px;
+            text-align: left;
+        }
+        .pet-details-content h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #1a4780;
+        }
+        .pet-details-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pet-details-content li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div th:each="pet : ${Petsa}" class="pet-details">
+        <img th:src="@{${pet.PPhoto}}" alt="Pet Photo">
+        <div class="pet-details-content">
+            <h2 th:text="${pet.PName}"></h2>
+            <ul>
+                <li><strong>ID:</strong> <span th:text="${pet.PID}"></span></li>
+                <li><strong>Description:</strong> <span th:text="${pet.PDesc}"></span></li>
+                <li><strong>Age:</strong> <span th:text="${pet.PAge}"></span></li>
+                <li><strong>Breed:</strong> <span th:text="${pet.PBreed}"></span></li>
+                <li><strong>Health:</strong> <span th:text="${pet.PHealth}"></span></li>
+                <a th:href="@{/api/fetchOwner/{sid}/{pid}(sid=${pet.Sid},pid=${pet.PID})}"> <li><strong>Owner:</strong> <span th:text="${pet.Sid}"></span></li></a>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

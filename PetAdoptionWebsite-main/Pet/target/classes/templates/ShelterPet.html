@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/api/home}">Home</a></li>
+        <li><a th:href="@{/api/login}">Login</a></li>
+        <li><a th:href="@{/api/ShelterOptions}">Sign Up</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h1>To Insert Enter the details</h1>
+
+    <form action="/petinsert" method="post">
+        <label for="Pname">Pet Name:</label>
+        <input type="text" id="Pname" name="Pname">
+        <br>
+        <label for="Pid">Pet Id:</label>
+        <input type="text" id="PId" name="Pid">
+        <br>
+        <label for="PDesc">Pet Description:</label>
+        <input type="text" id="PDesc" name="PDesc">
+        <br>
+        <label for="PPhoto">Pet Photo Path:</label>
+        <input type="text" id="PPhoto" name="PPhoto">
+        <br>
+        <label for="PAge">Pet Age:</label>
+        <input type="text" id="PAge" name="PAge">
+        <br>
+        <label for="PBreed">Pet Breed:</label>
+        <input type="text" id="PBreed" name="PBreed">
+        <br>
+        <label for="PHealth">Pet Health:</label>
+        <input type="text" id="PHealth" name="PHealth">
+        <br>
+        <label for="Sid">Your Id:</label>
+        <input type="text" id="Sid" name="Sid">
+        <br>
+        <button type="submit">Submit</button>
+        <div th:if="${message!=null}" th:text="${message}" id="successMessage"></div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var messageDiv = document.getElementById('successMessage');
+        if (messageDiv.textContent.trim() !== '') {
+            messageDiv.style.display = 'block';
+            alert(messageDiv.textContent.trim());
+            messageDiv.textContent=null;
+        }
+    });
+</script>
+
+</body>
+</html>

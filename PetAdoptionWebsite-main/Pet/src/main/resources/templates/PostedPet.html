@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f7ff;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .pet-details {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+        .pet-details img {
+            max-width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            object-fit: cover;
+            height: 200px; /* Reduce the image height */
+        }
+        .pet-details-content {
+            padding: 20px;
+            text-align: left;
+            flex-grow: 1;
+        }
+        .pet-details-content h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #1a4780;
+        }
+        .pet-details-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pet-details-content li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .pet-details-content li strong {
+            color: #333;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/api/home}">Home</a></li>
+        <li><a th:href="@{/api/show}">Post</a></li>
+        <li><a href="#">Delete</a></li>
+        <li><a href="#">Requests</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div th:each="pe : ${pets}" class="pet-details">
+        <img th:src="@{${pe.PPhoto}}" alt="Pet Photo">
+        <div class="pet-details-content">
+            <h2 th:text="${pe.PID}"></h2>
+            <ul>
+                <li><strong>ID:</strong> <span th:text="${pe.PID}"></span></li>
+                <li><strong>Description:</strong> <span th:text="${pe.PDesc}"></span></li>
+                <li><strong>Age:</strong> <span th:text="${pe.PAge}"></span></li>
+                <li><strong>Breed:</strong> <span th:text="${pe.PBreed}"></span></li>
+                <li><strong>Health:</strong> <span th:text="${pe.PHealth}"></span></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+
+    </style>
+</head>
+<body >
+<div class = "topnav">
+    <img th:src="@{/images/WeCare2.jpg}" src="../static/images/WeCare2.jpg" class="pic">
+    <a href="" class="t t1">Home Services</a>
+    <a href="" class="t t2">Shop</a>
+    <a href="" class="t t3">Login</a>
+</div>
+<div class = "cen">
+    <a th:href="@{/api/ShelterOptions}" class="fa f1">Animal Shelter</a>
+    <a th:href="@{/api/fetch}" class="fa f2">Adopter</a>
+
+
+</div>
+
+
+<style th:inline="text">
+    .cen{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:40px;
+        margin-top:200px ;
+        font-size: 1rem;
+
+
+
+
+    }
+    .fa{
+
+        color: rgb(255, 253, 253);
+        background-color: #ff7716;
+        border: 2px solid #ff7716;
+        border-radius: 20px;
+        font-size: 29px;
+        font-weight: 1000;
+        width: 200px;
+        height: 120px;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 100px;
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .fa:hover{
+        border-color:  rgba(0, 0, 0, 0.795);
+        background-color: rgba(0, 0, 0, 0.795);
+    }
+    .topnav{
+        background-color: #ff7716;
+        display: flex;
+        justify-content: end;
+        border-radius: 10px ;
+
+    }
+    .pic{
+        height: 80px;
+        margin-right: 50%;
+
+
+    }
+    .t{
+        border-left: 3px solid rgb(255, 253, 253);
+        text-decoration: none;
+        padding:  20px 20px;
+        font-size: 25px;
+        color:  rgb(255, 253, 253);
+
+
+        font-family:'Times New Roman', Times, serif;
+
+    }
+    .t:hover{
+        border-color:  rgba(0, 0, 0, 0.795);
+        background-color: rgba(0, 0, 0, 0.795);
+
+    }
+    body{
+        background-image: ;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+</style>
+</body>
+</html>
